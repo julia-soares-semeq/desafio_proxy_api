@@ -1,0 +1,40 @@
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-container h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #031a33;
+}
+
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.button-grid button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #022246;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-grid button:hover {
+  background-color: #003f87;
+  transform: scale(1.05);
+}
