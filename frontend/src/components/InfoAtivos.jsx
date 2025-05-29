@@ -11,6 +11,7 @@ function InfoAtivos(){
 
   access_token = localStorage.getItem("access");
   const [dados, setDados] = useState([]);
+  const [deviceType, setDeviceType] = useState('');
   const [loading, setLoading] = useState(false);
   const [site, setSite] = useState([]);
   const [id, setId] = useState([]);
@@ -19,9 +20,16 @@ function InfoAtivos(){
 const handleSubmit = async (e) => {
     e.preventDefault();
       try {
+        const headers = {
+        id,
+        Authorization: `Bearer ${access_token}`,
+      };
+      if (deviceType) {
+        headers.device_type = deviceType;
+      }
         const response = await api.get(`${url}/info`, {
           params: {site},
-          headers:{id},
+          headers,
         });
         setDados(response.data); 
         setErro(null);
@@ -37,6 +45,7 @@ const handleSubmit = async (e) => {
     <div className="wrapper">
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
+          <h1>Submit the site and ID number</h1>
           <div className="form-group">
           <label className='form-label'>Site</label>
           <input className="inputValue" value={site} type="text" placeholder="site" onChange={(e) => setSite(e.target.value)}/>
@@ -45,6 +54,16 @@ const handleSubmit = async (e) => {
           <label className='form-label'>ID</label>
           <input className="inputValue" value={id} type="text" placeholder="id" onChange={(e) => setId(e.target.value)}/>
           </div>
+          <div className="form-group">
+              <label className='form-label'>Device Type (opcional)</label>
+              <input
+                className="inputValue"
+                value={deviceType}
+                type="text"
+                placeholder="device_type"
+                onChange={(e) => setDeviceType(e.target.value)}
+              />
+            </div>
       <button className='form-btn' type="submit">Submit</button>
     </form>
     </div>

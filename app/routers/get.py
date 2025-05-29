@@ -43,16 +43,26 @@ async def tree_ativos(site: int = Query(...), revision: int = Header(...), crede
             raise HTTPException(status_code = 401, detail=messages.response_tree)
     
 @router.get("/info")
-async def info_ativos(site: int, id:int = Header(...), device_type: Optional[int] = Header(default=None), credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def info_ativos(
+    site: int,
+    id: int = Header(...),
+    device_type: Optional[int] = Header(default=None),
+    credentials: HTTPAuthorizationCredentials = Depends(security)
+):
     token = credentials.credentials
-    headers = {"id": id}
     url_tree = os.getenv("url_info")
 
-    headers = {"Authorization": f"Bearer {token}"}
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "id": str(id)
+    }
+
+    if device_type is not None:
+        headers["device_type"] = str(device_type)
     
     async with httpx.AsyncClient() as client:
-        response = await client.get(url_tree,params={"site": site}, headers=headers)
-        if response.status_code ==200:
+        response = await client.get(url_tree, params={"site": site}, headers=headers)
+        if response.status_code == 200:
             return response.json()
-        if response.status_code != 200:
-            raise HTTPException(status_code = 401, detail=messages.bad_request_info)
+        else:
+            raise HTTPException(status_code=response.status_code, detail=response.json())

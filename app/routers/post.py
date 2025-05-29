@@ -18,7 +18,7 @@ class Token(BaseModel):
 class Refresh(BaseModel):
     refresh: str
 
-@router.post("/token")
+@router.post("/login")
 async def retrive_token(credentials: Credentials):
     url_token = os.getenv("url_token")
     headers = {"Content-Type": "application/JSON"}

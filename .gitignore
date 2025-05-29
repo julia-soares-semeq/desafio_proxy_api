@@ -6,7 +6,5 @@ url.env
 /app/client.py
 /app/__init__.py
 node_modules/
-/desafio_proxy_api/errors/__pycache__/__init__.cpython-313.pyc
-/desafio_proxy_api/errors/__pycache__/messages.cpython-313.pyc
-__pycache__/
+**/__pycache__/
 *.pyc

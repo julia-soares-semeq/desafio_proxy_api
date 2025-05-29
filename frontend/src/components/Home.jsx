@@ -8,7 +8,7 @@ function Home(){
     const navigate = useNavigate();
   return (
     <div className="home-container ">
-        <h1 className="titulo">Bem-vindo!</h1>
+        <h1 className="titulo">Welcome!</h1>
         <div className="button-grid">
              <button onClick={() => navigate('/usercorp')}>Retrieve User Data</button>
              <button onClick={() => navigate('/tree')}>Retrieve Tree</button>

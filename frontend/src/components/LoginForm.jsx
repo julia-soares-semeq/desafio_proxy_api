@@ -15,7 +15,7 @@ function LoginForm() {
     setError("");
 
     try {
-      const response = await fetch(`${url}/token`, {
+      const response = await fetch(`${url}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

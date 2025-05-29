@@ -38,14 +38,14 @@ const handleSubmit = async (e) => {
     <div className="wrapper">
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
-          <h1>Para acessar os dados da arvore, insira o site e revision</h1>
+          <h1>Submit the site and revision number</h1>
           <div className="form-group">
             <label className='form-label'>Site</label>
-            <input className="inputValue" value={site} type="text" placeholder="site" onChange={(e) => setSite(e.target.value)}/>
+            <input required className="inputValue" value={site} type="text" placeholder="site" onChange={(e) => setSite(e.target.value)}/>
           </div>
           <div className="form-group">
             <label className='form-label'>Revision</label>
-            <input className="inputValue" value={revision} type="text" placeholder="revision" onChange={(e) => setRevision(e.target.value)}/>
+            <input required className="inputValue" value={revision} type="text" placeholder="revision" onChange={(e) => setRevision(e.target.value)}/>
           </div>
       <button className='form-btn' type="submit">Submit</button>
     </form>
