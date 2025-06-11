@@ -79,6 +79,7 @@ Install frontend dependencies:
 cd frontend
 npm install
 npm install react-router-dom
+npm install axios
 ```
 
 ## 🚀 Running the Project
@@ -124,6 +125,12 @@ Here, you’ll find three buttons that allow you to:
 - Get asset information
 
 <img src="./images/home_page_working.png" width="600" alt="">
+
+### Fetch usercorp data
+
+The UserCorp data will be displayed as soon as you click the button on the homepage.
+
+<img src="./images/usercorp_result.png" width="600" alt="">
 
 ### 🌳 Retrieve Tree Data
 
